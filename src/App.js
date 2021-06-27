@@ -5,24 +5,37 @@ import "./App.css";
 dotenv.config()
 
 const unsplash = createApi({
-  accessKey: "ADtOVLoeo-3XWE2FbC8sa0KltCWZh4adlb4X9sACIDA",
+  accessKey: process.env.REACT_APP_ACCESS_KEY,
 });
 
 
-const formSubmit=(e)=>{
-  e.preventDefault()
-}
+
 
 function App() {
+  const formSubmit = (e) => {
+    e.preventDefault();
+    fetchApi()
+  };
+  const onChange = (e) => {
+    e.preventDefault()
+    setQuery(e.target.value)
+  }
+  const search = async(e) => {
+    // setQuery(e.target.value)
+    await fetchApi()
+  }
   const [result, setResult] = useState([])
+  const[query,setQuery] = useState("africans")
 
+  const fetchApi = ()=>unsplash.search
+    .getPhotos({ query: query, perPage: 20 })
+    .then((result) => {
+      setResult(result.response.results);
+      console.log(result);
+    });
+  
   useEffect(() => {
-    unsplash.search.getPhotos({ query: "africans", perPage: 20, })
-      .then(result => {
-        setResult(result.response.results)
-        console.log(result);
-      }
-      )
+    fetchApi()
   }, [])
 
 
@@ -38,8 +51,11 @@ function App() {
               className="search"
               data-testid="search"
               placeholder="Search for photo"
+              value={query}
+              onChange={onChange}
             />
           </div>
+          {/* <button className="search-btn" onClick={search}>Search</button> */}
         </div>
       </form>
       <div className="card-list">
