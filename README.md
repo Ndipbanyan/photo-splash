@@ -1,4 +1,4 @@
-# Getting Started with photo search
+# Getting Started with photo splash
 
 This project displays photos from the unsplash api
 ## Available Scripts
