@@ -45,7 +45,7 @@ function App() {
             <span className="fa fa-search" aria-hidden="true"></span>
             <input
               type="text"
-              className="search"
+              className="search-input"
               data-testid="search"
               placeholder="Search for photo"
               value={query}
@@ -61,9 +61,19 @@ function App() {
           {
             return (
               <div className="card" key={item.id}>
-                <img className="card-image"src={item.urls.regular} alt={item.alt_description}/>
+                <img
+                  className="card-image"
+                  src={item.urls.regular}
+                  alt={item.alt_description}
+                />
+                <div className="overlay"></div>
+                <div className="author">
+        
+                  <img className="author-image" src={item.user.profile_image.small}/>
+                  <a className="author-profile" href={item.user.links.html}> {item.user.first_name}</a>
+                </div>
               </div>
-            )
+            );
             })
         }
       </div>
