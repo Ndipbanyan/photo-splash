@@ -20,10 +20,7 @@ function App() {
     e.preventDefault()
     setQuery(e.target.value)
   }
-  const search = async(e) => {
-    // setQuery(e.target.value)
-    await fetchApi()
-  }
+ 
   const [result, setResult] = useState([])
   const[query,setQuery] = useState("africans")
 
@@ -55,7 +52,7 @@ function App() {
               onChange={onChange}
             />
           </div>
-          {/* <button className="search-btn" onClick={search}>Search</button> */}
+         
         </div>
       </form>
       <div className="card-list">

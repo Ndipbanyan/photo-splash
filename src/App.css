@@ -32,7 +32,6 @@ body {
   width: 80%;
   padding: 0 2rem;
   margin: -30px auto 0 auto;
-  
 }
 .card-image {
   width: 100%;
@@ -43,4 +42,11 @@ body {
   margin-bottom: 1rem;
   /* border-radius: 8px; */
   /* background: blue; */
+}
+/* media queries */
+
+@media only screen and (max-width: 768px){
+  .card-list{
+    column-count: 1;
+  }
 }
